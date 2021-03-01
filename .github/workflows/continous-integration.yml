@@ -15,7 +15,6 @@ jobs:
         dotnet-version: 3.1.101        
     - name: Ensure GitHub NuGet Source
       run: | 
-        nuget remove source github
         nuget add source https://nuget.pkg.github.com/owner/index.json -n github -u Viincenttt -p ${{ secrets.PAT_TOKEN }} --store-password-in-clear-text
       working-directory: src
     - name: BotTemplate - Install dependencies
