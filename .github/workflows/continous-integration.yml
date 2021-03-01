@@ -16,6 +16,7 @@ jobs:
         source-url: https://nuget.pkg.github.com/owner/index.json
       env:
         NUGET_AUTH_TOKEN: ${{secrets.PAT_TOKEN}}
+      working-directory: src
     - name: BotTemplate - Install dependencies
       run: dotnet restore
       working-directory: src
