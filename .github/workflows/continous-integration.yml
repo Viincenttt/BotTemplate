@@ -16,7 +16,14 @@ jobs:
         source-url: https://nuget.pkg.github.com/owner/index.json
       env:
         NUGET_AUTH_TOKEN: ${{secrets.PAT_TOKEN}}
-      working-directory: src
+        
+    - name: Ensure GitHub NuGet Source
+      run: |
+        dotnet nuget add source https://nuget.pkg.github.com/owner/index.json \
+        -n github \
+        -u Viincenttt \
+        -p ${{ secrets.PAT_TOKEN }} \
+        --store-password-in-clear-text
     - name: BotTemplate - Install dependencies
       run: dotnet restore
       working-directory: src
