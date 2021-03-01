@@ -15,10 +15,12 @@ jobs:
         dotnet-version: '3.1.x'
         source-url: https://nuget.pkg.github.com/Viincenttt/index.json
       env:
-        NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NUGET_AUTH_TOKEN: ${{ secrets.PAT_TOKEN }}
     - name: BotTemplate - Install dependencies
       run: dotnet restore
       working-directory: src
+      env:
+        READ_PACKAGES_TOKEN : ${{secrets.PAT_TOKEN}}
     - name: TradingBot - Build
       run: dotnet build --configuration Release --no-restore
       working-directory: src
