@@ -16,10 +16,10 @@ jobs:
     - name: Cleanup
       continue-on-error: true
       run: |
-        dotnet nuget remove source github-private
+        dotnet nuget remove source github
     - name: BotTemplate - Install dependencies
       run: |
-        nuget sources add -name "github-private" -Source https://nuget.pkg.github.com/Viincenttt/index.json -StorePasswordInClearText -Username Viincenttt -Password ${{ secrets.PAT_TOKEN }}
+        nuget sources add -name "github" -Source https://nuget.pkg.github.com/Viincenttt/index.json -StorePasswordInClearText -Username Viincenttt -Password ${{ secrets.PAT_TOKEN }}
         dotnet restore
       working-directory: src
       env:
