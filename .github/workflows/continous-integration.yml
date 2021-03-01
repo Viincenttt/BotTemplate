@@ -13,14 +13,13 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '3.1.x'
-        source-url: https://nuget.pkg.github.com/Viincenttt/index.json
-      env:
-        NUGET_AUTH_TOKEN: ${{ secrets.PAT_TOKEN }}
     - name: BotTemplate - Install dependencies
-      run: dotnet restore
-      working-directory: src
+      run: |
+        nuget sources add -name "private-packages" -Source https://nuget.pkg.github.com/viincenttt/index.json -StorePasswordInClearText -Username Viincenttt -Password ${env:Password}
+        dotnet restore ConsoleApp1
+      working-directory: ConsoleApp1
       env:
-        READ_PACKAGES_TOKEN : ${{secrets.PAT_TOKEN}}
+        Password: ${{ secrets.PAT_TOKEN }}
     - name: TradingBot - Build
       run: dotnet build --configuration Release --no-restore
       working-directory: src
