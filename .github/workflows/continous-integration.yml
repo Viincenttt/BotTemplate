@@ -17,9 +17,7 @@ jobs:
       run: | 
         nuget sources remove -name "github"
         nuget sources add -name "github" -Source https://nuget.pkg.github.com/Viincenttt/index.json -StorePasswordInClearText -Username Viincenttt -Password ${{ secrets.PAT_TOKEN }}
-      working-directory: src
-    - name: BotTemplate - Install dependencies
-      run: dotnet restore
+        nuget restore
       working-directory: src
     - name: TradingBot - Build
       run: dotnet build --configuration Release --no-restore
