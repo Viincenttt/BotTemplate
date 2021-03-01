@@ -15,9 +15,9 @@ jobs:
         dotnet-version: '3.1.x'
     - name: BotTemplate - Install dependencies
       run: |
-        nuget sources add -name "private-packages" -Source https://nuget.pkg.github.com/viincenttt/index.json -StorePasswordInClearText -Username Viincenttt -Password ${env:Password}
-        dotnet restore ConsoleApp1
-      working-directory: ConsoleApp1
+        nuget sources add -name "github" -Source https://nuget.pkg.github.com/Viincenttt/index.json -StorePasswordInClearText -Username Viincenttt -Password ${env:Password}
+        dotnet restore
+      working-directory: src
       env:
         Password: ${{ secrets.PAT_TOKEN }}
     - name: TradingBot - Build
