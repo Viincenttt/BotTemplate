@@ -12,18 +12,11 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.101
-        source-url: https://nuget.pkg.github.com/owner/index.json
-      env:
-        NUGET_AUTH_TOKEN: ${{secrets.PAT_TOKEN}}
-        
+        dotnet-version: 3.1.101        
     - name: Ensure GitHub NuGet Source
-      run: |
-        dotnet nuget add source https://nuget.pkg.github.com/owner/index.json \
-        -n github \
-        -u Viincenttt \
-        -p ${{ secrets.PAT_TOKEN }} \
-        --store-password-in-clear-text
+      run: | 
+        dotnet nuget remove source github
+        dotnet nuget add source https://nuget.pkg.github.com/owner/index.json -n github -u Viincenttt -p ${{ secrets.PAT_TOKEN }} --store-password-in-clear-text
     - name: BotTemplate - Install dependencies
       run: dotnet restore
       working-directory: src
