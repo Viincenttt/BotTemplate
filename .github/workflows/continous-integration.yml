@@ -13,6 +13,10 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '3.1.x'
+    - name: Cleanup
+      continue-on-error: true
+      run: |
+        dotnet nuget remove source github-private
     - name: BotTemplate - Install dependencies
       run: |
         nuget sources add -name "github-private" -Source https://nuget.pkg.github.com/Viincenttt/index.json -StorePasswordInClearText -Username Viincenttt -Password ${{ secrets.PAT_TOKEN }}
