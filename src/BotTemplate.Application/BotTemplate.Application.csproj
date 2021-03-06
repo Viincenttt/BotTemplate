@@ -6,9 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="TradingBot.Configuration" Version="1.0.1" />
-        <PackageReference Include="TradingBot.Exchange.Binance" Version="1.0.1" />
-        <PackageReference Include="TradingBot.Utilities" Version="1.0.1" />
+        <PackageReference Include="TradingBot.Configuration" Version="1.0.2" />
         <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.3" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.3" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="3.1.3" />
@@ -19,6 +17,7 @@
         <PackageReference Include="Serilog.Sinks.ApplicationInsights" Version="3.1.0" />
         <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
         <PackageReference Include="Serilog.Sinks.File" Version="4.1.0" />
+        <PackageReference Include="TradingBot.Exchange.Binance" Version="1.0.2" />
     </ItemGroup>
 
     <ItemGroup>
@@ -30,6 +29,15 @@
       <Content Include="secrets.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
+      <None Remove="appsettings.development.json" />
+      <Content Include="appsettings.development.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\BotTemplate.DAL\BotTemplate.DAL.csproj" />
+      <ProjectReference Include="..\BotTemplate.Domain\BotTemplate.Domain.csproj" />
     </ItemGroup>
 
 </Project>
