@@ -2,6 +2,7 @@
 using BotTemplate.DAL.Entities;
 using BotTemplate.Domain.Dto;
 using BotTemplate.Domain.Support;
+using BotTemplate.Domain.TradeContextServices;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TradingBot.Domain.Shared;
@@ -45,6 +46,8 @@ namespace BotTemplate.Domain {
             services.ConfigureAndValidate<CandleStickIntervalOptions>(configuration.GetSection("TradingOptions:CandleStickIntervalOptions"));
             
             services.Add(new ServiceDescriptor(typeof(ITradeContextService<TradingPairContext, ConcreteTradingPair, ConcreteTrade>), typeof(TradeStatusUpdater<TradingPairContext, ConcreteTradingPair, ConcreteTrade>), ServiceLifetime.Transient));
+            services.Add(new ServiceDescriptor(typeof(ITradeContextService<TradingPairContext, ConcreteTradingPair, ConcreteTrade>), typeof(SellAlgorithm), ServiceLifetime.Transient));
+            services.Add(new ServiceDescriptor(typeof(ITradeContextService<TradingPairContext, ConcreteTradingPair, ConcreteTrade>), typeof(BuyAlgorithm), ServiceLifetime.Transient));
             services.Add(new ServiceDescriptor(typeof(ITradeContextService<TradingPairContext, ConcreteTradingPair, ConcreteTrade>), typeof(MaximumPriceDifferenceCapper<TradingPairContext, ConcreteTradingPair, ConcreteTrade>), ServiceLifetime.Transient));
             
             services.Add(new ServiceDescriptor(typeof(IBuyOrderCheck<TradingPairContext, ConcreteTradingPair, ConcreteTrade>), typeof(PumpAndDumpCheck<TradingPairContext, ConcreteTradingPair, ConcreteTrade>), ServiceLifetime.Transient));
