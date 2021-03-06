@@ -19,7 +19,7 @@ namespace BotTemplate.DAL {
         protected virtual void SeedTradingPairs(ModelBuilder modelBuilder) {
             modelBuilder.Entity<ConcreteTradingPair>().HasData(this.CreateBtcFiatPair(1, KnownCoins.BTC, KnownCoins.USDT));
             modelBuilder.Entity<ConcreteTradingPair>().HasData(this.CreateBtcFiatPair(1200, KnownCoins.BTC, KnownCoins.EUR));           
-            modelBuilder.Entity<ConcreteTradingPair>().HasData(this.CreateTradingPair(1400, KnownCoins.EUR, KnownCoins.USDT, 2, 4));
+            modelBuilder.Entity<ConcreteTradingPair>().HasData(this.CreateBtcFiatPair(1400, KnownCoins.EUR, KnownCoins.USDT));
             modelBuilder.Entity<ConcreteTradingPair>().HasData(this.CreateBtcFiatPair(1600, KnownCoins.BTC, KnownCoins.BUSD));
         }
         
