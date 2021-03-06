@@ -8,4 +8,8 @@
       <PackageReference Include="TradingBot.Domain.Shared" Version="1.0.2" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\BotTemplate.DAL\BotTemplate.DAL.csproj" />
+    </ItemGroup>
+
 </Project>
